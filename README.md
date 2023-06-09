@@ -8,8 +8,6 @@ This repository contains the code and results for a project focused on exploring
 - [Requirements](#requirements)
 - [Usage](#usage)
 - [Results](#results)
-- [Discussion](#discussion)
-- [Conclusion](#conclusion)
 - [Contributers](#contributers)
 
 ## Introduction
