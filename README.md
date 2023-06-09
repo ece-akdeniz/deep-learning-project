@@ -14,10 +14,8 @@ This repository contains the code and results for a project focused on exploring
 Neural networks often suffer from overfitting, where they perform well on training data but fail to generalize to new, unseen examples. Dropout is a regularization technique that addresses overfitting by randomly deactivating neurons during training, forcing the network to learn robust representations and reducing reliance on specific features. This project aims to investigate the impact of dropout on neural network performance and compare it with other benchmark regularization methods.
 
 ## Project Structure
-- `data/`: Contains the CIFAR-10 dataset used for training and evaluation.
 - `models/`: Includes the implementations of different neural network architectures with dropout and other regularization techniques.
 - `results/`: Contains the results obtained from training and evaluating the models.
-- `utils/`: Contains utility functions for data preprocessing, model training, and evaluation.
 - `main.ipynb`: Jupyter Notebook showcasing the project's code and analysis.
 
 ## Requirements
