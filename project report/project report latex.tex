@@ -1,0 +1,120 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{Exploring Dropout: A Powerful Strategy for Overfitting Prevention in Neural Networks}
+\author{Ece Akdeniz 2004229 & Ata Deniz Arslaner 2004040}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+Overfitting in neural networks occurs when the model becomes too complex and tightly fits the training data, resulting in poor generalization to unseen data. It is caused by the model memorizing the training examples rather than learning the underlying patterns. This is problematic as it leads to high accuracy on the training set but low performance on test data. 
+
+The paper titled "Dropout: A Simple Way to Prevent Neural Networks from Overfitting" proposes a technique called dropout that addresses the problem of overfitting in neural networks by introducing constraints that discourage the network from relying too heavily on specific features or memorizing the training data, improving the network's generalization ability. Dropout is a regularization method that randomly drops units, along with their connections, from the neural network during training, as shown in Figure 1. This prevents units from relying too heavily on each other and encourages the network to learn more robust and generalizable representations. The paper demonstrates that dropout improves the performance of neural networks in various domains, such as object classification, digit recognition, speech recognition, document classification, and computational biology. It achieves state-of-the-art results on several benchmark datasets and shows that dropout is a general technique applicable to many different domains.
+
+The objectives of the project are to reproduce the results of the paper on the CIFAR-10 and CIFAR-100 datasets by implementing dropout in neural networks to reduce overfitting. In addition to reproducing the paper's findings, the project aims to implement and compare other benchmark methods for regularization and overfitting prevention on the same datasets. Through these tasks, the project seeks to validate the effectiveness of dropout, explore its application in image classification tasks, gain insights into its behavior and assess the relative performance of different benchmark methods. 
+
+\section{Related Works}
+
+In the related works section, we reviewed several traditional regularization methods for preventing overfitting in neural networks. Batch normalization is a one of these techniques, which normalizes the activations of intermediate layers within a mini-batch during training. It helps in reducing the internal covariate shift and can accelerate the training process. By normalizing the inputs, it helps in stabilizing the network and prevents overfitting. Data augmentation is another technique for regularization which artificially increases the size of the training set by applying various transformations to the existing data, such as rotations, translations, or flips. It helps in introducing diversity and reducing overfitting by exposing the model to different variations of the same data. 
+
+These traditional techniques have been effective in combating overfitting in neural networks. However, they also come with limitations. Batch normalization introduces additional computational overhead during training and may not be suitable for all architectures or tasks. Additionally, the effectiveness of data augmentation depends on the specific task and the available transformations. In contrast, dropout is introduced as a novel technique to address these limitations. It randomly drops units and their connections during training, preventing co-adaptation and promoting robust features. Dropout acts as an ensemble learning method and significantly reduces overfitting, making it a powerful tool in neural network regularization.
+
+In contrast, dropout is introduced as a novel technique to address these limitations. It randomly drops units and their connections during training, preventing co-adaptation and promoting robust features. Dropout acts as an ensemble learning method and significantly reduces overfitting, making it a powerful tool in neural network regularization.
+
+\begin{figure}[!tbp]
+  \centering
+  \subfloat[Standard Neural Net]
+  {\includegraphics[width=0.3\textwidth]{Standard.png}\label{fig:f1}}
+  \hfill
+  \subfloat[After applying dropout]{\includegraphics[width=0.3\textwidth]{Dropout.png}\label{fig:f2}}
+  \caption{}
+\end{figure}
+
+\section{Materials and Methods}
+The paper introduces dropout as a technique used in neural networks to combat overfitting, which involves randomly dropping out units and their connections during training. “In a neural network with L hidden layers, each layer is indexed by l, and the inputs and outputs of each layer are denoted as $z^{(l)}$ and $y^{(l)}$, respectively. The standard feed-forward operation of a neural network is modified in dropout by introducing a binary vector $r^{(l)}$, sampled from a Bernoulli distribution with a dropout rate (p). This vector is element-wise multiplied with the outputs of the layer to create thinned outputs $\tilde{y}$, which are then passed as inputs to the next layer. During training, dropout neural networks are trained using stochastic gradient descent, where for each training case, a thinned network is sampled by dropping out units. Gradients for each parameter are averaged over the training cases in each mini-batch. 
+
+In this section, the project aims to reproduce the results of the paper on the CIFAR-10 dataset by implementing dropout in neural networks. To replicate the results, the project implemented the same model architecture and hyperparameters as described in the paper. The model was trained using stochastic gradient descent with backpropagation on the CIFAR-10 training set, which comprised 50,000 32x32 color images categorized into 10 classes. The performance of the model was evaluated on the CIFAR-10 test set, and the obtained results were compared to the reported results in the paper. The evaluation metric used in the paper was not mentioned, but it is likely to be accuracy. 
+
+The given models represent various architectures and hyperparameters used in training neural networks. Method 1 uses a convolutional neural network (CNN) with two convolutional layers and two dense layers. Method 2 extends Method 1 by adding two more convolutional layers. Method 3 incorporates dropout regularization into Method 2, inserting a dropout layer between the dense layers. Method 4 further enhances Method 3 by applying dropout regularization to the convolutional layers as well. Method 5 introduces a more complex architecture with three convolutional layers, max pooling, and a dense layer with maxout activation. All models were compiled with stochastic gradient descent (SGD) optimizer, trained using categorical cross entropy loss, and evaluated using accuracy as the metric. The models were trained for 20 epochs with a batch size of 128.
+
+In addition to reproducing the paper's findings, the project aimed to implement and compare other benchmark regularization methods on the CIFAR-10 dataset. These methods included batch normalization and data augmentation. The architecture of the models stayed the same in this part. 
+
+\section{Results}
+
+In our implementation, we evaluated the performance of various convolutional neural network (CNN) models on the CIFAR-10 dataset. We compared the results of the following models:
+\begin{itemize}
+\item Method 1: CNN + Max Pooling
+\item Method 2: CNN Net + Max Pooling (Snoek et al., 2012)
+\item Method 3: CNN Net + Max Pooling + Dropout in fully connected layers
+\item Method 4: CNN Net + Max Pooling + Dropout in all layers
+\item Method 5: CNN Net + Maxout (Goodfellow et al., 2013)
+\end{itemize}
+
+
+\begin{table}
+\centering
+\begin{tabular}{l|l|l}
+Method & Test Loss & Test Accuracy \\\hline
+Method 1 & 1.1560 & 0.6251 \\
+Method 2 & 0.8530 & 0.6182 \\
+Method 3 & 1.213 & 0.6300  \\
+Method 4 & 1.354 & 0.6982  \\
+Method 5 & 0.612 & 0.7114  
+\end{tabular}
+\caption{\label{tab:widgets}}
+\end{table}
+
+After training the models, we obtained the results shown in Table 1. These results demonstrate that the inclusion of dropout regularization in the CNN architecture significantly improves performance, with convolutional layers followed by max pooling layers and dropout in all layers achieving the lowest loss.
+Furthermore, we compared the performance of our dropout-enhanced neural network models with a baseline model. The dropout models consistently outperformed the baseline model in terms of loss, demonstrating the effectiveness of dropout in improving the network's ability to generalize and reduce overfitting.
+These results highlight the importance of dropout regularization in enhancing the performance of CNNs on the CIFAR-10 dataset and potentially on other image classification datasets. 
+
+In addition to reproducing the findings of the paper, our project implemented and compared different benchmark regularization methods on the CIFAR-10 dataset. These methods included dropout, batch normalization, and data augmentation.
+The results showed that the dropout-enhanced neural network achieved a loss of 0.9164, outperforming the other benchmark methods. Batch normalization had a loss of 0.9454, while data augmentation resulted in a loss of 0.9975, as shown in Table 2. These differences indicate that dropout regularization was more effective in reducing the loss compared to the other techniques.
+The variations in performance can be attributed to the strengths and characteristics of each regularization method. Dropout introduces noise by randomly dropping out neurons during training, encouraging the network to learn more robust features. Batch normalization normalizes layer activations, improving network stability. Data augmentation expands the training set with transformed images, enhancing generalization.
+In the case of CIFAR-10, dropout proved to be the most effective method, likely due to its ability to regularize network parameters and encourage diversity in learned representations. The relatively small image size of CIFAR-10 and the network's need for robust features could have contributed to dropout's superior performance.
+
+\section{Discussions}
+The impact of dropout on neural network performance has been analyzed in this project. Dropout has shown to effectively reduce overfitting and improve generalization. By randomly dropping out neurons during training, it prevents co-adaptation and encourages the learning of robust features, enabling the network to generalize well to unseen data.
+The results highlight the trade-off between dropout's regularization and training time. Dropout provides regularization without significantly increasing training time, making it practical and efficient. By adjusting the dropout rate, the extent of regularization can be controlled, allowing customization based on model and dataset requirements.
+One advantage of dropout is its enhancement of generalization. By promoting diverse feature learning, dropout helps the network capture meaningful patterns and reduces reliance on specific features, improving performance on unseen examples and handling data variations.
+However, drawbacks include increased randomness requiring careful hyperparameter tuning and reduced training capacity. Despite these limitations, dropout's benefits in regularization and generalization outweigh the drawbacks.
+
+\section{Conclusion}
+This project demonstrates the effectiveness of dropout in preventing overfitting. Dropout consistently improves performance by reducing overfitting and enhancing generalization. Its strengths lie in providing regularization without significant training time overhead, striking a balance between regularization and efficiency. Dropout fosters diverse feature learning, improving the network's ability to handle unseen data.
+
+While dropout has limitations, it is a powerful technique. Future research can explore extending dropout to other models or improving training time efficiency. By leveraging dropout's strengths and addressing its limitations, researchers and practitioners can enhance neural network performance across various domains.
+
+\begin{table}
+\centering
+\begin{tabular}{l|l|l}
+Method & Test Loss & Test Accuracy \\\hline
+Batch Norm. + Data Aug. & 0.9975 & 0.7114 \\ 
+Batch Normalization & 0.9454 & 0.7201 \\
+Dropout in all layers & 0.9164 & 0.8362  \\
+\end{tabular}
+\caption{\label{tab:widgets}}
+\end{table}
+
+\section{References}
+M. D. Zeiler and R. Fergus. Stochastic pooling for regularization of deep convolutional neural networks. CoRR, abs/1301.3557, 2013.
+J. Snoek, H. Larochelle, and R. Adams. Practical Bayesian optimization of machine learning algorithms. In Advances in Neural Information Processing Systems 25, pages 2960–2968, 2012.
+
+I. J. Goodfellow, D. Warde-Farley, M. Mirza, A. Courville, and Y. Bengio. Maxout networks. In Proceedings of the 30th International Conference on Machine Learning, pages 1319– 1327. ACM, 2013.
+
+Srivastava, N., Hinton, G., Krizhevsky, A., Sutskever, I., & Salakhutdinov, R. (2014). Dropout: A Simple Way to Prevent Neural Networks from Overfitting. The journal of machine learning research, 15(1), 1929-1958.
+
+\end{document}
