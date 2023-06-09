@@ -39,6 +39,6 @@ To run the code in this repository, you will need the following dependencies:
 ## Results
 The `results/` directory contains the obtained results, including accuracy, loss, and other evaluation metrics, for each model and regularization technique. These results can be further analyzed and visualized using the provided notebooks or custom scripts.
 
-## Contributers
-@ataarslaner
-@ece-akdeniz
+## Contributors
+[@Ece Akdeniz](https://github.com/ece-akdeniz)
+[@Ata Deniz Arslaner](https://github.com/ataarslaner)
