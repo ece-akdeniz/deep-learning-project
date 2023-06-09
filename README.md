@@ -1,6 +1,6 @@
 # Exploring Dropout: A Powerful Strategy for Overfitting Prevention in Neural Networks
 
-This repository contains the code and results for a project focused on exploring the regularization technique of dropout in neural networks. The project aims to reproduce the findings of a seminal paper on dropout and extend the analysis to compare it with other benchmark regularization methods.
+This repository contains the code and results for a project focused on exploring the regularization technique of dropout in neural networks. This project aims to investigate the impact of dropout on neural network performance and compare it with other benchmark regularization methods.
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -11,7 +11,8 @@ This repository contains the code and results for a project focused on exploring
 - [Contributers](#contributers)
 
 ## Introduction
-Neural networks often suffer from overfitting, where they perform well on training data but fail to generalize to new, unseen examples. Dropout is a regularization technique that addresses overfitting by randomly deactivating neurons during training, forcing the network to learn robust representations and reducing reliance on specific features. This project aims to investigate the impact of dropout on neural network performance and compare it with other benchmark regularization methods.
+Neural networks often suffer from overfitting, where they perform well on training data but fail to generalize to new, unseen examples. The paper titled "Dropout: A Simple Way to Prevent Neural Networks from Overfitting" introduces a technique called dropout to address this problem by randomly deactivating neurons during training, forcing the network to learn robust representations and reducing reliance on specific features. The project aims to reproduce the paper's results on the CIFAR-10 datasets and compare other benchmark methods for regularization and overfitting prevention.
+
 
 ## Project Structure
 - `models/`: Includes the implementations of different neural network architectures with dropout and other regularization techniques.
