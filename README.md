@@ -16,7 +16,7 @@ Neural networks often suffer from overfitting, where they perform well on traini
 ## Project Structure
 - `models/`: Includes the implementations of different neural network architectures with dropout and other regularization techniques.
 - `results/`: Contains the results obtained from training and evaluating the models.
-- `main.ipynb`: Jupyter Notebook showcasing the project's code and analysis.
+- `reproduce.ipynb`: Jupyter Notebook used for reproducing the paper's results.
 
 ## Requirements
 To run the code in this repository, you will need the following dependencies:
