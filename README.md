@@ -16,7 +16,7 @@ Neural networks often suffer from overfitting, where they perform well on traini
 
 ## Project Structure
 - `reproducing-results.ipynb`: Jupyter Notebook used for reproducing the paper's results, includes the implementations of different neural network architectures with and without dropout.
-- `comparison with other benchmark methods/`: Directory of Jupyer Notebooks used for comparing benchmark regularization methods, includes the implementations of different neural network architectures with dropout and other regularization techniques.
+- `other benchmark methods/`: Directory of Jupyer Notebooks used for comparing benchmark regularization methods, includes the implementations of different neural network architectures with dropout and other regularization techniques.
 - `results/`: Contains the results obtained from training and evaluating the models plotted for easy reading.
 - `project report/`: Contains the project report in both PDF and latex formats.
 - `presentation.pdf`: Slides prepared for the presentation of the project.
